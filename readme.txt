@@ -5,3 +5,11 @@ Write a class called Group (since Set is already taken). Like Set, it has add, d
 Use the === operator, or something equivalent such as indexOf, to determine whether two values are the same.
 
 Give the class a static from method that takes an iterable object as argument and creates a group that contains all the values produced by iterating over it.
+
+---
+
+Make the Group class from the previous exercise iterable. Refer to the section about the iterator interface earlier in the chapter if you aren’t clear on the exact form of the interface anymore.
+
+If you used an array to represent the group’s members, don’t just return the iterator created by calling the Symbol.iterator method on the array. That would work, but it defeats the purpose of this exercise.
+
+It is okay if your iterator behaves strangely when the group is modified during iteration.

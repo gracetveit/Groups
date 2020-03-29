@@ -29,8 +29,30 @@ class Group {
         return this.set.includes(value)
     }
 
+    [Symbol.iterator] () {
+        return new GroupIterator(this.set)
+    }
+
     static from (iterable) {
         return new Group(iterable)
+    }
+}
+
+class GroupIterator {
+    constructor(list) {
+        this.list = list
+        this.curPos = 0
+        // Constructs with curent position tracked
+    }
+
+    next() {
+        // Checks whether loop is done, and if not, moves past current value and
+        // returns it.
+        if (this.list.length === this.curPos) return {done: true};
+
+        let curVal = this.list[this.curPos]
+        this.curPos++;
+        return{value: curVal, done: false}
     }
 }
 
@@ -43,3 +65,7 @@ group.add(10);
 group.delete(10);
 
 console.log(group.has(10));
+
+for (let value of Group.from(["a", "b", "c"])) {
+    console.log(value);
+}
